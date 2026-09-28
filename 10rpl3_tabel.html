@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+    <title>Biodata Mahasiswa Vertikal</title>
+    <style>
+        /* Membuat judul rata tengah */
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Membuat tabel melebar 100% dan rapi */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Mengatur lebar kolom kiri (label) dan kolom kanan (isi) */
+        th {
+            width: 30%;
+            background-color: #3b31d4; /* Warna biru tua sesuai punya kamu */
+            color: white;
+            text-align: left;
+            padding: 12px;
+        }
+
+        td {
+            width: 70%;
+            background-color: #26b2d6; /* Warna biru muda sesuai punya kamu */
+            color: black;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PROFIL BIODATA SISWA HANDSOME</h1>
+
+    <table border="1">
+        <tr>
+            <th>Field/atribut</th>
+            <th>Keterangan/hasil input</th>
+        </tr>
+        <tr>   
+            <th>Nama</th>
+            <td>LINZ LEBIH GANTENG DARI JEFRI</td>
+        </tr>
+        <tr>
+            <th>Alamat</th>
+            <td>Jakarta Selatan Blok M</td>
+        </tr>
+        <tr>
+            <th>Jurusan</th>
+            <td>Rekayasa Perangkat Lunak</td>
+        </tr>
+        <tr>
+            <th>Jenis Kelamin</th>
+            <td>Laki-laki</td>
+        </tr>
+        <tr>
+            <th>Tinggi Badan (cm)</th>
+            <td>170</td>
+        </tr>
+        <tr>
+            <th>Berat Badan (kg)</th>
+            <td>60</td>
+        </tr>
+        <tr>
+            <th>Hobi</th>
+            <td>Gamer</td>
+        </tr>
+        <tr>
+            <th>No HP</th>
+            <td>081234567890</td>
+        </tr>
+    </table>
+    <body>status:data berhasil disimpan oleh sistem </body>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Biodata Siswa Merge & Split</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+
+        th {
+            background-color: #3b31d4;
+            color: white;
+            text-align: center;
+            padding: 12px;
+        }
+
+        td {
+            background-color: #26b2d6;
+            color: black;
+            text-align: left;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PROFIL BIODATA SISWA (MERGE & SPLIT)</h1>
+
+    <table border="1">
+        <tr>
+            <!-- Colspan: menggabungkan 3 kolom untuk Judul Header -->
+            <th colspan="3">DATA LENGKAP SISWA HANDSOME</th>
+        </tr>
+        <tr>
+            <th width="30%">Kategori</th>
+            <th width="35%">Atribut / Field</th>
+            <th width="35%">Keterangan</th>
+        </tr>
+        <tr>
+            <!-- Rowspan: menggabungkan 2 baris ke bawah untuk kategori Data Diri -->
+            <td rowspan="2" style="background-color: #3b31d4; color: white; font-weight: bold;">Data Diri</td>
+            <td>Nama</td>
+            <td>LINZ KEMBARAN JEFRI</td>
+        
+
+        </tr>
+        <tr>
+            <td>Alamat</td>
+            <td>Jakarta Selatan Blok M</td>
+        </tr>
+        <tr>
+            <!-- Rowspan: menggabungkan 1 baris ke bawah untuk kategori Akademik -->
+            <td rowspan="1" style="background-color: #3b31d4; color: white; font-weight: bold;">Akademik</td>
+            <td>Jurusan</td>
+            <td>Rekayasa Perangkat Lunak</td>
+        </tr>
+        <tr>
+           <td rowspan="1" style="background: #3b31d4; color:white;font-weight: bold;"><b>Lain-lain</b></td>
+  <td>Hobi</td>
+  <td>gamer</td>
+        </tr>
+        <tr>
+        <td rowspan="4" style="background: #3b31d4; color:white;font-weight: bold;"><b>Fisik & Kontak</b></td>
+  <td rowspan="2">Tinggi & Berat Badan</td>
+  <td>170 cm</td>
+</tr>
+<tr>
+  <td>60 kg</td>
+</tr>
+<tr>
+  <td>Jenis Kelamin</td>
+  <td>Laki-laki</td>
+</tr>
+<tr>
+  <td>No HP</td>
+  <td>081234567890</td>
+</tr>
+    </table>
+
+</body>
+</html>
