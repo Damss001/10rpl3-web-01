@@ -3,227 +3,254 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biodata Siswa - Animated Sunset & Animals</title>
+  <title>Form Biodata Siswa - Linzz Luxury</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Base Body & Scroll Setup */
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      overflow-y: auto;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    :root {
+      --gold: #ffd700;
+      --card-bg: rgba(13, 18, 30, 0.7);
+      --input-bg: rgba(255, 255, 255, 0.05);
     }
 
-    /* Animasi Sunset Background */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
     body {
-      background: linear-gradient(-45deg, #ff512f, #f09819, #e03e1f, #ff8c00);
-      background-size: 400% 400%;
-      animation: sunsetGlow 10s ease infinite;
-    }
-
-    @keyframes sunsetGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Burung Terbang */
-    .birds-layer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    .bird-track {
-      position: absolute;
-      animation: flyForward linear infinite;
-    }
-
-    .bird {
-      display: inline-block;
-      font-size: 32px;
-      transform: scaleX(-1);
-      animation: floatAndFlap 1.6s ease-in-out infinite alternate;
-    }
-
-    .bird-track.b1 { top: 10%; animation-duration: 9s; animation-delay: 0s; }
-    .bird-track.b2 { top: 25%; animation-duration: 13s; animation-delay: 3s; }
-    .bird-track.b3 { top: 40%; animation-duration: 11s; animation-delay: 6s; }
-
-    .b2 .bird { font-size: 26px; animation-duration: 1.2s; }
-    .b3 .bird { font-size: 36px; animation-duration: 2s; }
-
-    @keyframes flyForward {
-      0% { left: -15%; }
-      100% { left: 115%; }
-    }
-
-    @keyframes floatAndFlap {
-      0% { transform: scaleX(-1) translateY(0px) rotate(-6deg); }
-      100% { transform: scaleX(-1) translateY(-22px) rotate(8deg); }
-    }
-
-    /* Container Form */
-    .container {
+      background: #05070d;
+      color: #f3f4f6;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      padding: 40px 20px;
-      min-height: 100vh;
-      box-sizing: border-box;
+      align-items: center;
+      padding: 3.5rem 1.5rem;
       position: relative;
-      z-index: 2;
+      overflow-x: hidden;
     }
+
+    /* 1. ANIMASI BACKGROUND RINGKAS & TEBAL */
+    .bg-animation {
+      position: fixed;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.35), transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(138, 43, 226, 0.3), transparent 40%),
+        radial-gradient(circle at 50% 20%, rgba(255, 140, 0, 0.25), transparent 35%);
+      animation: rotateBg 12s linear infinite;
+      filter: blur(50px);
+      z-index: 0;
+    }
+
+    @keyframes rotateBg {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* TOMBOL KEMBALI KE BERANDA (NAVIGASI ATAS) */
+    .top-nav {
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      z-index: 10;
+    }
+
+    .back-link {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: 0.3s;
+    }
+
+    .back-link:hover {
+      color: var(--gold);
+      transform: translateX(-4px);
+    }
+
+    /* 2. CARD FORM MAIN CONTAINER */
+    .container { width: 100%; max-width: 580px; position: relative; z-index: 2; }
 
     .card {
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(6px);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      background: var(--card-bg);
+      border: 1.5px solid rgba(212, 175, 55, 0.3);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2);
+    }
+
+    .card-header { text-align: center; margin-bottom: 2rem; }
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.8rem; font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-header h2 span { color: var(--gold); }
+
+    /* 3. FORM INPUTS & LAYOUT */
+    .form-group { margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+
+    label { display: block; margin-bottom: 0.5rem; font-size: 0.88rem; font-weight: 600; }
+
+    input[type="text"], input[type="number"], select {
       width: 100%;
-      max-width: 500px;
+      padding: 0.85rem 1rem;
+      background: var(--input-bg);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      color: #fff;
+      outline: none;
+      transition: 0.3s;
     }
 
-    .card h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #222;
+    input:focus, select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
     }
 
-    .form-group {
-      margin-bottom: 18px;
+    select option { background-color: #0d121e; }
+
+    /* RADIO BUTTONS */
+    .radio-group { display: flex; gap: 0.8rem; }
+    .radio-card { flex: 1; }
+    .radio-card input { display: none; }
+    .radio-card label {
+      display: block; text-align: center;
+      padding: 0.8rem 0.5rem;
+      background: var(--input-bg);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px; cursor: pointer; transition: 0.3s;
     }
 
-    .form-group label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: #333;
+    .radio-card input:checked + label {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.25);
+      color: var(--gold);
     }
 
-    .form-group input, 
-    .form-group select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-sizing: border-box;
-      font-size: 14px;
-    }
-
-    .radio-group {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .radio-group label {
-      font-weight: normal;
-      margin-bottom: 0;
-      cursor: pointer;
-    }
-
+    /* SUBMIT BUTTON */
     .btn-submit {
-      width: 100%;
-      padding: 12px;
-      background-color: #ff512f;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background-color 0.3s, transform 0.2s;
+      width: 100%; padding: 1rem;
+      background: linear-gradient(135deg, #ffd700, #b8860b);
+      color: #05070d; border: none; border-radius: 12px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+      transition: 0.3s;
     }
 
-    .btn-submit:hover {
-      background-color: #e03e1f;
-      transform: translateY(-2px);
-    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6); }
+
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-  <div class="birds-layer">
-    <div class="bird-track b1"><span class="bird">🦅</span></div>
-    <div class="bird-track b2"><span class="bird">🕊️</span></div>
-    <div class="bird-track b3"><span class="bird">🦅</span></div>
+  <!-- LAYER ANIMASI BACKGROUND -->
+  <div class="bg-animation"></div>
+
+  <!-- TOMBOL KEMBALI KE BERANDA -->
+  <div class="top-nav">
+    <a href="index.html" class="back-link">← Kembali ke Beranda</a>
   </div>
 
   <div class="container">
     <div class="card">
-      <h2>📝 Form Biodata Siswa</h2>
+      
+      <div class="card-header">
+        <span class="badge">Sistem Biodata</span>
+        <h2>Form Input <span>Siswa</span></h2>
+      </div>
 
-      <!-- Pindah ke hasil_biodata.html menggunakan metode GET -->
       <form action="hasil_biodata.html" method="GET">
+        
         <div class="form-group">
-          <label>👤 Nama Lengkap *</label>
-          <input type="text" name="nama" placeholder="Masukkan nama..." required>
+          <label>Nama Lengkap *</label>
+          <input type="text" name="nama" placeholder="Contoh: Linzz Handsome" required>
         </div>
 
         <div class="form-group">
-          <label>🏠 Alamat *</label>
-          <input type="text" name="alamat" placeholder="Masukkan alamat..." required>
+          <label>Alamat *</label>
+          <input type="text" name="alamat" placeholder="Contoh: Jakarta Selatan" required>
         </div>
 
-        <div class="form-group">
-          <label>🎓 Jurusan</label>
-          <select name="jurusan">
-            <option value="RPL">RPL</option>
-            <option value="TSM">TSM</option>
-            <option value="TKJ">TKJ</option>
-            <option value="TKR">TKR</option>
-          </select>
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Jurusan</label>
+            <select name="jurusan">
+              <option value="RPL">RPL</option>
+              <option value="TKJ">TKJ</option>
+              <option value="TSM">TSM</option>
+              <option value="TKR">TKR</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Golongan Darah</label>
+            <select name="goldar">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="AB">AB</option>
+              <option value="O">O</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-group">
           <label>Jenis Kelamin</label>
           <div class="radio-group">
-            <label><input type="radio" name="jk" value="Laki-laki" checked> 👨 Laki-laki</label>
-            <label><input type="radio" name="jk" value="Perempuan"> 👩 Perempuan</label>
-            <label><input type="radio" name="jk" value="Lainnya"> ⚧️ Lainnya</label>
+            <div class="radio-card">
+              <input type="radio" id="jk-l" name="jk" value="Laki-laki" checked>
+              <label for="jk-l">👨 Laki-laki</label>
+            </div>
+            <div class="radio-card">
+              <input type="radio" id="jk-p" name="jk" value="Perempuan">
+              <label for="jk-p">👩 Perempuan</label>
+            </div>
+            <div class="radio-card">
+              <input type="radio" id="jk-o" name="jk" value="Lainnya">
+              <label for="jk-o">⚧ Lainnya</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Tinggi Badan (cm)</label>
+            <input type="number" name="tinggi" placeholder="170">
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Berat Badan (kg)</label>
+            <input type="number" name="berat" placeholder="60">
           </div>
         </div>
 
         <div class="form-group">
-          <label>📏 Tinggi Badan (cm)</label>
-          <input type="number" name="tinggi" placeholder="Contoh: 170">
+          <label>Hobi</label>
+          <input type="text" name="hobi" placeholder="Contoh: Coding">
         </div>
 
         <div class="form-group">
-          <label>⚖️ Berat Badan (kg)</label>
-          <input type="number" name="berat" placeholder="Contoh: 60">
+          <label>Nomor HP</label>
+          <input type="number" name="nohp" placeholder="081234567890">
         </div>
 
-        <div class="form-group">
-          <label>🩸 Golongan Darah</label>
-          <select name="goldar">
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="AB">AB</option>
-            <option value="O">O</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>🎨 Hobi</label>
-          <input type="text" name="hobi" placeholder="Masukkan hobi...">
-        </div>
-
-        <div class="form-group">
-          <label>📱 Nomor HP</label>
-          <input type="number" name="nohp" placeholder="08xxxxxxxxxx">
-        </div>
-
-        <button type="submit" class="btn-submit">💾 SIMPAN</button>
+        <button type="submit" class="btn-submit">Simpan Biodata</button>
       </form>
+
     </div>
   </div>
 

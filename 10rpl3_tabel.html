@@ -2,170 +2,272 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-    <title>Biodata Mahasiswa Vertikal</title>
-    <style>
-        /* Membuat judul rata tengah */
-        h1 {
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata Linzz - Premium View</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-gold: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa771c 100%);
+      --accent-glow: rgba(212, 175, 55, 0.25);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
 
-        /* Membuat tabel melebar 100% dan rapi */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: Arial, sans-serif;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
 
-        /* Mengatur lebar kolom kiri (label) dan kolom kanan (isi) */
-        th {
-            width: 30%;
-            background-color: #3b31d4; /* Warna biru tua sesuai punya kamu */
-            color: white;
-            text-align: left;
-            padding: 12px;
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.5rem;
+      position: relative;
+    }
 
-        td {
-            width: 70%;
-            background-color: #26b2d6; /* Warna biru muda sesuai punya kamu */
-            color: black;
-            padding: 12px;
-        }
-    </style>
+    /* Ambient Glow */
+    .glow-bg {
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
+    }
+
+    h1 span {
+      background: var(--accent-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom Table Styling */
+    .table-responsive {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--card-border);
+      font-size: 0.95rem;
+    }
+
+    /* Column Headers */
+    th {
+      background: rgba(212, 175, 55, 0.1);
+      color: #d4af37;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+
+    td {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    tr:last-child th, tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Custom Category Styling for Merge Table */
+    .category-cell {
+      background: rgba(212, 175, 55, 0.05) !important;
+      color: #f3e5ab;
+      font-weight: 700;
+      border-right: 1px solid var(--card-border);
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .main-header {
+      background: var(--accent-gold) !important;
+      color: #0b0f19 !important;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    /* Status Alert */
+    .status-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>PROFIL BIODATA SISWA HANDSOME</h1>
+  <div class="glow-bg"></div>
 
-    <table border="1">
-        <tr>
-            <th>Field/atribut</th>
-            <th>Keterangan/hasil input</th>
-        </tr>
-        <tr>   
+  <!-- BAGIAN 1: TABEL VERTIKAL -->
+  <div class="container">
+    <h1>PROFIL BIODATA <span>SISWA HANDSOME</span></h1>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 35%;">Field / Atribut</th>
+            <th style="width: 65%;">Keterangan / Hasil Input</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
             <th>Nama</th>
             <td>LINZ LEBIH GANTENG DARI JEFRI</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Alamat</th>
             <td>Jakarta Selatan Blok M</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Jurusan</th>
             <td>Rekayasa Perangkat Lunak</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Jenis Kelamin</th>
             <td>Laki-laki</td>
-        </tr>
-        <tr>
-            <th>Tinggi Badan (cm)</th>
-            <td>170</td>
-        </tr>
-        <tr>
-            <th>Berat Badan (kg)</th>
-            <td>60</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
+            <th>Tinggi Badan</th>
+            <td>170 cm</td>
+          </tr>
+          <tr>
+            <th>Berat Badan</th>
+            <td>60 kg</td>
+          </tr>
+          <tr>
             <th>Hobi</th>
             <td>Gamer</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>No HP</th>
             <td>081234567890</td>
-        </tr>
-    </table>
-    <body>status:data berhasil disimpan oleh sistem </body>
-</body>
-</html>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Biodata Siswa Merge & Split</title>
-    <style>
-        h1 {
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
+    <div class="status-badge">
+      <span>✓</span> Status: Data berhasil disimpan oleh sistem
+    </div>
+  </div>
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: Arial, sans-serif;
-        }
+  <!-- BAGIAN 2: TABEL MERGE & SPLIT -->
+  <div class="container">
+    <h1>PROFIL BIODATA SISWA <span>(MERGE & SPLIT)</span></h1>
 
-        th {
-            background-color: #3b31d4;
-            color: white;
-            text-align: center;
-            padding: 12px;
-        }
-
-        td {
-            background-color: #26b2d6;
-            color: black;
-            text-align: left;
-            padding: 12px;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>PROFIL BIODATA SISWA (MERGE & SPLIT)</h1>
-
-    <table border="1">
-        <tr>
-            <!-- Colspan: menggabungkan 3 kolom untuk Judul Header -->
-            <th colspan="3">DATA LENGKAP SISWA HANDSOME</th>
-        </tr>
-        <tr>
-            <th width="30%">Kategori</th>
-            <th width="35%">Atribut / Field</th>
-            <th width="35%">Keterangan</th>
-        </tr>
-        <tr>
-            <!-- Rowspan: menggabungkan 2 baris ke bawah untuk kategori Data Diri -->
-            <td rowspan="2" style="background-color: #3b31d4; color: white; font-weight: bold;">Data Diri</td>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3" class="main-header">DATA LENGKAP SISWA HANDSOME</th>
+          </tr>
+          <tr>
+            <th style="width: 25%; text-align: center;">Kategori</th>
+            <th style="width: 35%;">Atribut / Field</th>
+            <th style="width: 40%;">Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2" class="category-cell">Data Diri</td>
             <td>Nama</td>
             <td>LINZ KEMBARAN JEFRI</td>
-        
-
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td>Alamat</td>
             <td>Jakarta Selatan Blok M</td>
-        </tr>
-        <tr>
-            <!-- Rowspan: menggabungkan 1 baris ke bawah untuk kategori Akademik -->
-            <td rowspan="1" style="background-color: #3b31d4; color: white; font-weight: bold;">Akademik</td>
+          </tr>
+          <tr>
+            <td class="category-cell">Akademik</td>
             <td>Jurusan</td>
             <td>Rekayasa Perangkat Lunak</td>
-        </tr>
-        <tr>
-           <td rowspan="1" style="background: #3b31d4; color:white;font-weight: bold;"><b>Lain-lain</b></td>
-  <td>Hobi</td>
-  <td>gamer</td>
-        </tr>
-        <tr>
-        <td rowspan="4" style="background: #3b31d4; color:white;font-weight: bold;"><b>Fisik & Kontak</b></td>
-  <td rowspan="2">Tinggi & Berat Badan</td>
-  <td>170 cm</td>
-</tr>
-<tr>
-  <td>60 kg</td>
-</tr>
-<tr>
-  <td>Jenis Kelamin</td>
-  <td>Laki-laki</td>
-</tr>
-<tr>
-  <td>No HP</td>
-  <td>081234567890</td>
-</tr>
-    </table>
+          </tr>
+          <tr>
+            <td class="category-cell">Lain-lain</td>
+            <td>Hobi</td>
+            <td>Gamer</td>
+          </tr>
+          <tr>
+            <td rowspan="4" class="category-cell">Fisik & Kontak</td>
+            <td rowspan="2">Tinggi & Berat Badan</td>
+            <td>170 cm</td>
+          </tr>
+          <tr>
+            <td>60 kg</td>
+          </tr>
+          <tr>
+            <td>Jenis Kelamin</td>
+            <td>Laki-laki</td>
+          </tr>
+          <tr>
+            <td>No HP</td>
+            <td>081234567890</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 </body>
 </html>

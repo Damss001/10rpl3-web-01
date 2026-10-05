@@ -3,196 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hasil Biodata Siswa - Tema Luar Angkasa</title>
+  <title>Hasil Biodata Siswa - Linzz Luxury</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* 1. Base Body & Scroll Setup */
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      overflow-y: auto;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      position: relative;
+    :root {
+      --gold: #ffd700;
+      --card-bg: rgba(13, 18, 30, 0.7);
     }
 
-    /* 2. Animasi Background Gradient Luar Angkasa (Nebula & Space Void) */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
     body {
-      background: linear-gradient(-45deg, #0b0d1b, #1a103c, #2b0845, #080014);
-      background-size: 400% 400%;
-      animation: spaceGlow 15s ease infinite;
-    }
-
-    @keyframes spaceGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* 3. Lapis Animasi Objek Luar Angkasa Melayang */
-    .space-layer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    .space-item {
-      position: absolute;
-      font-size: 36px;
-      animation: orbitFloat linear infinite;
-    }
-
-    /* Posisi Awal, Ukuran, & Kecepatan Objek */
-    .s1 { top: 10%; left: -10%; animation-duration: 14s; animation-delay: 0s; } /* Roket */
-    .s2 { top: 30%; left: -10%; animation-duration: 20s; animation-delay: 4s; font-size: 42px; } /* UFO */
-    .s3 { top: 60%; left: -10%; animation-duration: 16s; animation-delay: 8s; font-size: 32px; } /* Astronot */
-    .s4 { top: 80%; left: -10%; animation-duration: 12s; animation-delay: 2s; font-size: 28px; } /* Komet */
-    .s5 { top: 45%; left: -10%; animation-duration: 25s; animation-delay: 10s; font-size: 48px; } /* Planet */
-
-    /* Keyframes Objek Melintas Melayang (Maju dari Kiri ke Kanan sambil Bergoyang) */
-    @keyframes orbitFloat {
-      0% {
-        transform: translateX(0) translateY(0) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      50% {
-        transform: translateX(60vw) translateY(-30px) rotate(180deg);
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(115vw) translateY(10px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* 4. Kartu Hasil Biodata Transparan Futuristik */
-    .container {
+      background: #05070d;
+      color: #f3f4f6;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 40px 20px;
-      min-height: 100vh;
-      box-sizing: border-box;
+      padding: 3.5rem 1.5rem;
       position: relative;
-      z-index: 2;
+      overflow-x: hidden;
+    }
+
+    /* 1. ANIMASI BACKGROUND PUTAR (SAMA DENGAN FORM) */
+    .bg-animation {
+      position: fixed;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.35), transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(138, 43, 226, 0.3), transparent 40%),
+        radial-gradient(circle at 50% 20%, rgba(255, 140, 0, 0.25), transparent 35%);
+      animation: rotateBg 12s linear infinite;
+      filter: blur(50px);
+      z-index: 0;
+    }
+
+    @keyframes rotateBg {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* 2. CARD CONTAINER & ANIMASI MASUK */
+    .container {
+      width: 100%; max-width: 560px;
+      position: relative; z-index: 2;
+      animation: popUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes popUp {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .card {
-      background: rgba(20, 20, 35, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-      width: 100%;
-      max-width: 500px;
-      animation: popIn 0.5s ease-out;
-      color: #ffffff;
+      background: var(--card-bg);
+      border: 1.5px solid rgba(212, 175, 55, 0.3);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.2);
     }
 
-    @keyframes popIn {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    .card-header { text-align: center; margin-bottom: 2rem; }
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.8rem; font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #7d5fff;
-      text-shadow: 0 0 10px rgba(125, 95, 255, 0.6);
-      font-size: 24px;
-    }
+    .card-header h2 span { color: var(--gold); }
+
+    /* 3. BARIS DATA & ANIMASI STAGGERED (MUNCUL BERURUTAN) */
+    .data-container { display: flex; flex-direction: column; gap: 0.75rem; }
 
     .data-row {
       display: flex;
       justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+      align-items: center;
+      padding: 0.85rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      transition: 0.3s;
+      animation: fadeInRow 0.5s ease forwards;
     }
 
-    .data-row span.label {
-      font-weight: 600;
-      color: #a4b0be;
+    .data-row:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--gold);
+      transform: translateX(4px);
     }
 
-    .data-row span.value {
-      font-weight: 500;
-      color: #ffffff;
+    @keyframes fadeInRow {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .btn-back {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 12px;
-      background: linear-gradient(135deg, #7d5fff, #7158e2);
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-      margin-top: 25px;
-      box-sizing: border-box;
-      transition: transform 0.2s, box-shadow 0.2s;
+    .data-row .label { font-size: 0.85rem; font-weight: 600; color: #9ca3af; }
+    .data-row .value { font-size: 0.95rem; font-weight: 600; color: #fff; text-align: right; }
+
+    /* TOMBOL KEMBALI */
+    .btn-submit {
+      display: block; text-align: center;
+      width: 100%; padding: 1rem; margin-top: 1.8rem;
+      background: linear-gradient(135deg, #ffd700, #b8860b);
+      color: #05070d; text-decoration: none; border-radius: 12px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+      transition: 0.3s;
     }
 
-    .btn-back:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(125, 95, 255, 0.5);
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6); }
+
+    @media (max-width: 480px) {
+      .data-row { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+      .data-row .value { text-align: left; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Objek Luar Angkasa Bergerak -->
-  <div class="space-layer">
-    <div class="space-item s1">🚀</div>
-    <div class="space-item s2">🛸</div>
-    <div class="space-item s3">👨‍🚀</div>
-    <div class="space-item s4">☄️</div>
-    <div class="space-item s5">🪐</div>
-  </div>
+  <!-- LAYER ANIMASI BACKGROUND -->
+  <div class="bg-animation"></div>
 
   <div class="container">
     <div class="card">
-      <h2>🚀 Hasil Biodata Siswa</h2>
       
-      <div id="result"></div>
+      <div class="card-header">
+        <span class="badge">Data Terverifikasi</span>
+        <h2>Hasil Biodata <span>Siswa</span></h2>
+      </div>
 
-      <a href="form_biodata.html" class="btn-back">⬅️ Kembali ke Form</a>
+      <!-- TEMPAT HASIL JAVASCRIPT MUNCUL -->
+      <div class="data-container" id="result"></div>
+
+      <a href="form_biodata.html" class="btn-submit">Kembali ke Form</a>
+
     </div>
   </div>
 
   <script>
-    // Membaca data yang dikirim dari URL
+    // 1. Mengambil data dari URL (query parameter dari form GET)
     const params = new URLSearchParams(window.location.search);
     const container = document.getElementById('result');
 
+    // 2. Daftar field data yang mau ditampilkan
     const fields = [
-      { key: 'nama', label: '👤 Nama Lengkap' },
-      { key: 'alamat', label: '🏠 Alamat' },
-      { key: 'jurusan', label: '🎓 Jurusan' },
+      { key: 'nama', label: 'Nama Lengkap' },
+      { key: 'alamat', label: 'Alamat' },
+      { key: 'jurusan', label: 'Jurusan' },
+      { key: 'goldar', label: 'Golongan Darah' },
       { key: 'jk', label: 'Jenis Kelamin' },
-      { key: 'tinggi', label: '📏 Tinggi Badan (cm)' },
-      { key: 'berat', label: '⚖️ Berat Badan (kg)' },
-      { key: 'goldar', label: '🩸 Golongan Darah' },
-      { key: 'hobi', label: '🎨 Hobi' },
-      { key: 'nohp', label: '📱 Nomor HP' }
+      { key: 'tinggi', label: 'Tinggi Badan (cm)' },
+      { key: 'berat', label: 'Berat Badan (kg)' },
+      { key: 'hobi', label: 'Hobi' },
+      { key: 'nohp', label: 'Nomor HP' }
     ];
 
-    fields.forEach(field => {
+    // 3. Loop untuk merender setiap baris data
+    fields.forEach((field, index) => {
       const val = params.get(field.key) || '-';
+      
+      // Tambahkan delay animasi per baris (Staggered animation)
       container.innerHTML += `
-        <div class="data-row">
-          <span class="label">${field.label}:</span>
+        <div class="data-row" style="animation-delay: ${index * 0.05}s">
+          <span class="label">${field.label}</span>
           <span class="value">${val}</span>
         </div>
       `;
