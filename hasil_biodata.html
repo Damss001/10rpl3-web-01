@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hasil Biodata Siswa - Linzz Luxury</title>
+  <title>Form Biodata Siswa - Linzz Luxury</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,7 @@
     :root {
       --gold: #ffd700;
       --card-bg: rgba(13, 18, 30, 0.7);
+      --input-bg: rgba(255, 255, 255, 0.05);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -29,7 +30,7 @@
       overflow-x: hidden;
     }
 
-    /* 1. ANIMASI BACKGROUND PUTAR (SAMA DENGAN FORM) */
+    /* 1. ANIMASI BACKGROUND RINGKAS & TEBAL */
     .bg-animation {
       position: fixed;
       top: -50%; left: -50%;
@@ -48,17 +49,32 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* 2. CARD CONTAINER & ANIMASI MASUK */
-    .container {
-      width: 100%; max-width: 560px;
-      position: relative; z-index: 2;
-      animation: popUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    /* TOMBOL KEMBALI KE BERANDA (NAVIGASI ATAS) */
+    .top-nav {
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      z-index: 10;
     }
 
-    @keyframes popUp {
-      from { opacity: 0; transform: translateY(30px) scale(0.95); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+    .back-link {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: 0.3s;
     }
+
+    .back-link:hover {
+      color: var(--gold);
+      transform: translateX(-4px);
+    }
+
+    /* 2. CARD FORM MAIN CONTAINER */
+    .container { width: 100%; max-width: 580px; position: relative; z-index: 2; }
 
     .card {
       background: var(--card-bg);
@@ -83,41 +99,53 @@
 
     .card-header h2 span { color: var(--gold); }
 
-    /* 3. BARIS DATA & ANIMASI STAGGERED (MUNCUL BERURUTAN) */
-    .data-container { display: flex; flex-direction: column; gap: 0.75rem; }
+    /* 3. FORM INPUTS & LAYOUT */
+    .form-group { margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
 
-    .data-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    label { display: block; margin-bottom: 0.5rem; font-size: 0.88rem; font-weight: 600; }
+
+    input[type="text"], input[type="number"], select {
+      width: 100%;
       padding: 0.85rem 1rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--input-bg);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 12px;
+      color: #fff;
+      outline: none;
       transition: 0.3s;
-      animation: fadeInRow 0.5s ease forwards;
     }
 
-    .data-row:hover {
-      background: rgba(255, 255, 255, 0.08);
+    input:focus, select:focus {
       border-color: var(--gold);
-      transform: translateX(4px);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
     }
 
-    @keyframes fadeInRow {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    select option { background-color: #0d121e; }
 
-    .data-row .label { font-size: 0.85rem; font-weight: 600; color: #9ca3af; }
-    .data-row .value { font-size: 0.95rem; font-weight: 600; color: #fff; text-align: right; }
-
-    /* TOMBOL KEMBALI */
-    .btn-submit {
+    /* RADIO BUTTONS */
+    .radio-group { display: flex; gap: 0.8rem; }
+    .radio-card { flex: 1; }
+    .radio-card input { display: none; }
+    .radio-card label {
       display: block; text-align: center;
-      width: 100%; padding: 1rem; margin-top: 1.8rem;
+      padding: 0.8rem 0.5rem;
+      background: var(--input-bg);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px; cursor: pointer; transition: 0.3s;
+    }
+
+    .radio-card input:checked + label {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.25);
+      color: var(--gold);
+    }
+
+    /* SUBMIT BUTTON */
+    .btn-submit {
+      width: 100%; padding: 1rem;
       background: linear-gradient(135deg, #ffd700, #b8860b);
-      color: #05070d; text-decoration: none; border-radius: 12px;
+      color: #05070d; border: none; border-radius: 12px;
       font-size: 1rem; font-weight: 700; cursor: pointer;
       box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
       transition: 0.3s;
@@ -125,10 +153,7 @@
 
     .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6); }
 
-    @media (max-width: 480px) {
-      .data-row { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
-      .data-row .value { text-align: left; }
-    }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -136,53 +161,98 @@
   <!-- LAYER ANIMASI BACKGROUND -->
   <div class="bg-animation"></div>
 
+  <!-- TOMBOL KEMBALI KE BERANDA -->
+  <div class="top-nav">
+    <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+  </div>
+
   <div class="container">
     <div class="card">
       
       <div class="card-header">
-        <span class="badge">Data Terverifikasi</span>
-        <h2>Hasil Biodata <span>Siswa</span></h2>
+        <span class="badge">Sistem Biodata</span>
+        <h2>Form Input <span>Siswa</span></h2>
       </div>
 
-      <!-- TEMPAT HASIL JAVASCRIPT MUNCUL -->
-      <div class="data-container" id="result"></div>
+      <form action="hasil_biodata.html" method="GET">
+        
+        <div class="form-group">
+          <label>Nama Lengkap *</label>
+          <input type="text" name="nama" placeholder="Contoh: Linzz Handsome" required>
+        </div>
 
-      <a href="form_biodata.html" class="btn-submit">Kembali ke Form</a>
+        <div class="form-group">
+          <label>Alamat *</label>
+          <input type="text" name="alamat" placeholder="Contoh: Jakarta Selatan" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Jurusan</label>
+            <select name="jurusan">
+              <option value="RPL">RPL</option>
+              <option value="TKJ">TKJ</option>
+              <option value="TSM">TSM</option>
+              <option value="TKR">TKR</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Golongan Darah</label>
+            <select name="goldar">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="AB">AB</option>
+              <option value="O">O</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Jenis Kelamin</label>
+          <div class="radio-group">
+            <div class="radio-card">
+              <input type="radio" id="jk-l" name="jk" value="Laki-laki" checked>
+              <label for="jk-l">👨 Laki-laki</label>
+            </div>
+            <div class="radio-card">
+              <input type="radio" id="jk-p" name="jk" value="Perempuan">
+              <label for="jk-p">👩 Perempuan</label>
+            </div>
+            <div class="radio-card">
+              <input type="radio" id="jk-o" name="jk" value="Lainnya">
+              <label for="jk-o">⚧ Lainnya</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Tinggi Badan (cm)</label>
+            <input type="number" name="tinggi" placeholder="170">
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Berat Badan (kg)</label>
+            <input type="number" name="berat" placeholder="60">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Hobi</label>
+          <input type="text" name="hobi" placeholder="Contoh: Coding">
+        </div>
+
+        <div class="form-group">
+          <label>Nomor HP</label>
+          <input type="number" name="nohp" placeholder="081234567890">
+        </div>
+
+        <button type="submit" class="btn-submit">Simpan Biodata</button>
+      </form>
 
     </div>
   </div>
-
-  <script>
-    // 1. Mengambil data dari URL (query parameter dari form GET)
-    const params = new URLSearchParams(window.location.search);
-    const container = document.getElementById('result');
-
-    // 2. Daftar field data yang mau ditampilkan
-    const fields = [
-      { key: 'nama', label: 'Nama Lengkap' },
-      { key: 'alamat', label: 'Alamat' },
-      { key: 'jurusan', label: 'Jurusan' },
-      { key: 'goldar', label: 'Golongan Darah' },
-      { key: 'jk', label: 'Jenis Kelamin' },
-      { key: 'tinggi', label: 'Tinggi Badan (cm)' },
-      { key: 'berat', label: 'Berat Badan (kg)' },
-      { key: 'hobi', label: 'Hobi' },
-      { key: 'nohp', label: 'Nomor HP' }
-    ];
-
-    // 3. Loop untuk merender setiap baris data
-    fields.forEach((field, index) => {
-      const val = params.get(field.key) || '-';
-      
-      // Tambahkan delay animasi per baris (Staggered animation)
-      container.innerHTML += `
-        <div class="data-row" style="animation-delay: ${index * 0.05}s">
-          <span class="label">${field.label}</span>
-          <span class="value">${val}</span>
-        </div>
-      `;
-    });
-  </script>
 
 </body>
 </html>
